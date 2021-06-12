@@ -7,13 +7,14 @@ services:
     environment:
       MYSQL_DATABASE: 'db'
       MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-      #MYSQL_ROOT_PASSWORD: ''
+      MYSQL_ROOT_PASSWORD: 'passwwwd'
     ports:
-      - '127.0.0.1:3306:3306'
+      - '0.0.0.0:3306:3306'
     expose:
       # Opens port 3306 on the container
       - '3306'
       # Where our data will be persisted
+    user: ${CURRENT_UID}
     volumes:
       - ./data:/var/lib/mysql
       - ./conf:/etc/mysql
